@@ -3,7 +3,9 @@ package app
 import (
 	"html/template"
 	"net/http"
+	"os"
 
+	"github.com/gorilla/handlers"
 	"github.com/msound/hellopod/pkg/config"
 )
 
@@ -21,7 +23,7 @@ func NewApp(config *config.Config) *App {
 	return &App{config: config, t: t}
 }
 
-func (app *App) GetIndexHandler() http.Handler {
+func (app *App) getIndexHandler() http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Add("Content-Type", "text/html")
 		data := map[string]any{
@@ -33,6 +35,12 @@ func (app *App) GetIndexHandler() http.Handler {
 		}
 		app.t.Execute(w, data)
 	})
+}
+
+func (app *App) GetHandler() http.Handler {
+	loggingHandler := handlers.CombinedLoggingHandler(os.Stdout, app.getIndexHandler())
+
+	return loggingHandler
 }
 
 func getTemplate() string {

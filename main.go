@@ -16,5 +16,5 @@ func main() {
 	appConfig := config.LoadConfig()
 	app := app.NewApp(appConfig)
 
-	log.Fatal(http.ListenAndServe(":"+appConfig.Port, app.GetIndexHandler()))
+	log.Fatal(http.ListenAndServe(":"+appConfig.Port, app.GetHandler()))
 }

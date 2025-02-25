@@ -8,5 +8,5 @@ Todo:
   ✔ add github actions @done(25-02-25 13:06)
   ✔ add version number @done(25-02-25 13:34)
   ✔ add docker image tags based on git tags @done(25-02-25 13:43)
-  ☐ add json web logging
+  ✔ add web logging @done(25-02-25 14:05)
   ☐ add manifests to README
