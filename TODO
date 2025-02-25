@@ -4,6 +4,6 @@ Todo:
   ✔ Print hostname in output @done(25-02-24 19:13)
   ✔ format output as HTML @done(25-02-24 19:30)
   ✔ Print host and path in output @done(25-02-24 19:37)
-  ☐ add Dockerfile
+  ✔ add Dockerfile @done(25-02-25 12:46)
   ☐ add github actions
   ☐ add manifests to README
