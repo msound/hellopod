@@ -9,7 +9,7 @@ import (
 	"github.com/msound/hellopod/pkg/config"
 )
 
-const APP_VERSION = "v0.1.1"
+const APP_VERSION = "v1.0.0"
 
 func main() {
 	slog.Info("Starting hellopod", "version", APP_VERSION)
