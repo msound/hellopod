@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## Unreleased
 
+## [v0.1.1](https://github.com/msound/hellopod/releases/tag/v0.1.1) - 2025-02-25
+
+- [`250915f`](https://github.com/msound/hellopod/commit/250915fff892005ff65780e70c84dbf5083374c6) fix: add docker tags based on git tags
+
 ## [v0.1.0](https://github.com/msound/hellopod/releases/tag/v0.1.0) - 2025-02-25
 
 - [`3b4ca0f`](https://github.com/msound/hellopod/commit/3b4ca0fdf7d844f518336549c939e3e70a01127a) ci: add github actions pipeline
