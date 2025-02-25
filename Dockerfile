@@ -1,4 +1,4 @@
-FROM docker.io/golang:1.24 as build-stage
+FROM docker.io/golang:1.24 AS build-stage
 
 ENV GOOS=linux GOARCH=amd64 CGO_ENABLED=0
 
