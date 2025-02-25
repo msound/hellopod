@@ -3,17 +3,14 @@ package main
 import (
 	"log"
 	"net/http"
-	"os"
+
+	"github.com/msound/hellopod/pkg/app"
+	"github.com/msound/hellopod/pkg/config"
 )
 
 func main() {
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = "80"
-	}
-	log.Fatal(http.ListenAndServe(":"+port, http.HandlerFunc(indexHandler)))
-}
+	appConfig := config.LoadConfig()
+	app := app.NewApp(*appConfig)
 
-func indexHandler(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("Hello pod!\n"))
+	log.Fatal(http.ListenAndServe(":"+appConfig.Port, app.GetIndexHandler()))
 }
