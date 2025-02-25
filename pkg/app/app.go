@@ -1,23 +1,44 @@
 package app
 
 import (
-	"fmt"
+	"html/template"
 	"net/http"
 
 	"github.com/msound/hellopod/pkg/config"
 )
 
 type App struct {
-	config config.Config
+	config *config.Config
+	t      *template.Template
 }
 
-func NewApp(config config.Config) *App {
-	return &App{config: config}
+func NewApp(config *config.Config) *App {
+	tpl := getTemplate()
+	t, err := template.New("web").Parse(tpl)
+	if err != nil {
+		panic("cannot parse template")
+	}
+	return &App{config: config, t: t}
 }
 
 func (app *App) GetIndexHandler() http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		output := fmt.Sprintf("Hello pod!\nHostname: %s\n", app.config.Hostname)
-		w.Write([]byte(output))
+		w.Header().Add("Content-Type", "text/html")
+		data := map[string]any{
+			"Pod": app.config.Pod,
+		}
+		app.t.Execute(w, data)
 	})
+}
+
+func getTemplate() string {
+	return `
+<!DOCTYPE html>
+<html>
+<head><title>Hello Pod!</title></head>
+<body>
+<h1>Hello Pod!</h1>
+<p>Pod: {{ .Pod }}</p>
+</body>
+</html>`
 }

@@ -5,13 +5,13 @@ import (
 )
 
 type Config struct {
-	Hostname string
-	Port     string
+	Pod  string
+	Port string
 }
 
 func LoadConfig() *Config {
 	var config Config
-	config.Hostname = getEnvVar("HOST", "unknown")
+	config.Pod = getEnvVar("HOSTNAME", "unknown")
 	config.Port = getEnvVar("PORT", "80")
 
 	return &config

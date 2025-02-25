@@ -10,7 +10,7 @@ import (
 
 func main() {
 	appConfig := config.LoadConfig()
-	app := app.NewApp(*appConfig)
+	app := app.NewApp(appConfig)
 
 	log.Fatal(http.ListenAndServe(":"+appConfig.Port, app.GetIndexHandler()))
 }
