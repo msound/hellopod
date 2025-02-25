@@ -25,7 +25,11 @@ func (app *App) GetIndexHandler() http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Add("Content-Type", "text/html")
 		data := map[string]any{
-			"Pod": app.config.Pod,
+			"Pod":      app.config.Pod,
+			"Host":     r.URL.Host,
+			"Path":     r.URL.Path,
+			"RemoteIP": r.RemoteAddr,
+			"RealIP":   r.Header.Get("X-Forwarded-For"),
 		}
 		app.t.Execute(w, data)
 	})
@@ -39,6 +43,10 @@ func getTemplate() string {
 <body>
 <h1>Hello Pod!</h1>
 <p>Pod: {{ .Pod }}</p>
+<p>Host: {{ .Host }}</p>
+<p>Path: {{ .Path }}</p>
+<p>RemoteIP: {{ .RemoteIP }}</p>
+<p>RealIP: {{ .RealIP }}</p>
 </body>
 </html>`
 }
