@@ -5,5 +5,5 @@ Todo:
   ✔ format output as HTML @done(25-02-24 19:30)
   ✔ Print host and path in output @done(25-02-24 19:37)
   ✔ add Dockerfile @done(25-02-25 12:46)
-  ☐ add github actions
+  ✔ add github actions @done(25-02-25 13:06)
   ☐ add manifests to README
