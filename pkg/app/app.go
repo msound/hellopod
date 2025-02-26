@@ -2,6 +2,7 @@ package app
 
 import (
 	"html/template"
+	"net"
 	"net/http"
 	"os"
 
@@ -26,12 +27,13 @@ func NewApp(config *config.Config) *App {
 func (app *App) getIndexHandler() http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Add("Content-Type", "text/html")
+		remoteHost, _, _ := net.SplitHostPort(r.RemoteAddr)
 		data := map[string]any{
-			"Pod":      app.config.Pod,
-			"Host":     r.URL.Host,
-			"Path":     r.URL.Path,
-			"RemoteIP": r.RemoteAddr,
-			"RealIP":   r.Header.Get("X-Forwarded-For"),
+			"Pod":           app.config.Pod,
+			"Host":          r.Host,
+			"Path":          r.URL.Path,
+			"RemoteIP":      remoteHost,
+			"XForwardedFor": r.Header.Get("X-Forwarded-For"),
 		}
 		app.t.Execute(w, data)
 	})
@@ -54,7 +56,7 @@ func getTemplate() string {
 <p>Host: {{ .Host }}</p>
 <p>Path: {{ .Path }}</p>
 <p>RemoteIP: {{ .RemoteIP }}</p>
-<p>RealIP: {{ .RealIP }}</p>
+<p>X-Forwarded-For: {{ .XForwardedFor }}</p>
 </body>
 </html>`
 }
