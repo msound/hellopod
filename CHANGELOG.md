@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## Unreleased
 
+## [v1.0.1](https://github.com/msound/hellopod/releases/tag/v1.0.1) - 2025-02-26
+
+- [`20ab447`](https://github.com/msound/hellopod/commit/20ab447185dfa67d4f4495e496015a38b92f8c38) fix: fix Host value in output
+
 ## [v1.0.0](https://github.com/msound/hellopod/releases/tag/v1.0.0) - 2025-02-25
 
 - [`63a4f3c`](https://github.com/msound/hellopod/commit/63a4f3c4801bb2934f24ddca97efa7b87f3f7ed5) feat!: add apache combined web logging
