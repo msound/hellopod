@@ -9,4 +9,4 @@ Todo:
   ✔ add version number @done(25-02-25 13:34)
   ✔ add docker image tags based on git tags @done(25-02-25 13:43)
   ✔ add web logging @done(25-02-25 14:05)
-  ☐ add manifests to README
+  ✔ add manifests to README @done(25-02-26 11:04)

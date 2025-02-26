@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hellopod-ingress
+  namespace: hellopod
+spec:
+  ingressClassName: nginx
+  rules:
+  # modify host value as per your cluster setup
+  - host: hellopod.cluster2.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: hellopod-svc
+            port:
+              number: 80
