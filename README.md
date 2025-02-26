@@ -17,4 +17,4 @@ docker pull ghcr.io/msound/hellopod
 
 ## Kubernetes Manifests
 
-Some example manifests to deploy this app, setup service and ingress can be found in the [k8s](k8s/) directory.
+Some example manifests to deploy this app, setup service and ingress can be found in the [k8s](k8s) directory.
